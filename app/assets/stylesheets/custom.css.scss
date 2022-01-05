@@ -1,5 +1,33 @@
 @import 'bootstrap/dist/css/bootstrap';
 
-.nav {
-  background-color: #FDF6EA !important;
+
+
+.nav-item{
+  color: white !important;
+}
+#bottomPage{
+  background-color: black !important;
+}
+#homecontainer{
+  margin-top: 25px;
+
+}
+#jumbotronhome{
+  background-image: asset-url('workingout.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 435px;
+}
+#spacing{
+  height: 150px;
+}
+html,
+body {
+  height: 100%;
+}
+
+#page-content {
+  flex: 1 0 auto;
+  background-color: lightgrey;
 }
