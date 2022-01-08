@@ -22,11 +22,16 @@
           <%= f.email_field :email %>
         </p>
         <p>
-          <%= f.label :password %> <br>
-          <%= f.password_field :password %>
+          <% if @user.new_record? %>
+            <%= f.label :password %> <br>
+            <%= f.password_field :password %>
+          <% else %>
+            <%= link_to 'Update Password', updatepassword_path(:user => { :user_id => @user.id}) , class: "btn btn-danger" %>
+
+          <% end %>
         </p>
         <p>
-          <%= f.submit "Sign up" %>
+          <%= f.submit(@user.new_record? ? "Sign up" : "Update Account")  %>
         </p>
       <% end %>
 

@@ -23,6 +23,26 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      flash[:notice] = "User Edited successfully"
+      redirect_to @user
+    else
+      render 'edit'
+    end
+
+  end
+
+  def updatepassword
+    #@user = User.first
+    @user = User.find(params[:user][:user_id])
+  end
+
   private
   def user_params
     params.require(:user).permit(:username, :email, :password)
