@@ -3,6 +3,7 @@
 Use this README to orrientaite yourself in the ruby ```
 
 Most of what will be relevant to you is what is inside the app folder
+
   -Controllers - Inside the controllers folder there is a controller.rb file for ever object inside of our application. The controller defines actions for the given object.
 
   -Models - inside the models folder there will be .rb files for any object that we are storing data for. The objects are automatically stored in an SQL database, in the model file we can decided validation rules and associations between other models
@@ -13,6 +14,7 @@ Most of what will be relevant to you is what is inside the app folder
 
 
 Other important files
+
   -'routes.rb' can be found within the config folder. This file specifies all 'routes' within the rails application. This is what is used to determine what urls can be found within our website as well as internal routes that connect to the controllers.
 
 
