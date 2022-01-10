@@ -15,4 +15,6 @@ Most of what will be relevant to you is what is inside the app folder
 Other important files
   -'routes.rb' can be found within the config folder. This file specifies all 'routes' within the rails application. This is what is used to determine what urls can be found within our website as well as internal routes that connect to the controllers.
 
+
+  -'schema.rb' can be found within the db folder. This file contains all data that is to be hard stored in SQL, such as the users table. New tables can be added and modified by using 'rails generate' commands and using 'rails migrations'
 ```
