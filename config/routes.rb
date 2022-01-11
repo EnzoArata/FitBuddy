@@ -13,4 +13,7 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   get 'logout', to: 'sessions#destroy'
 
+  get 'newgroup', to: 'groups#new'
+  resources :groups, except: [:new]
+
 end

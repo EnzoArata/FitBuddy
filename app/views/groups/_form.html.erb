@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-10">
+      <% if @group.errors.any? %>
+        <h2>The following errors prevented the group from being created</h2>
+        <ul>
+          <% @group.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+
+
+      <% end %>
+
+      <%= form_with(model: @group, local: true )  do |f| %>
+        <p>
+          <%= f.label :title %> <br>
+          <%= f.text_field :title %>
+        </p>
+        <p>
+          <%= f.label :bio %> <br>
+          <%= f.text_field :bio %>
+        </p>
+        <p>
+          <%= f.label :public %> <br>
+          <%= f.check_box :public %>
+        </p>
+      
+        <p>
+          <%= f.submit "Create Group!"  %>
+        </p>
+      <% end %>
+
+    </div>
+
+  </div>
+
+</div>
