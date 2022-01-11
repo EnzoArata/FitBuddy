@@ -1,7 +1,7 @@
 class User<ApplicationRecord
   before_save {self.email = email.downcase}
   has_many :articles
-  has_many :groups
+  has_and_belongs_to_many :groups
   validates :username, presence: true,
                   uniqueness: { case_sensitive: false },
                   length: {minimum:3, maximum:25}

@@ -1,4 +1,65 @@
 <h1 class="text-center">Welcome to <%=@user.username%>'s profile</h1>
+<br><br><br><br><br><br><br>
+<div class="container">
+  <div class="row align-items-start">
+    <div class="col">
+        <h4>Currently apart of</h4>
+        <table>
+          <thead>
+            <tr>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% if @user.groups != nil %>
+              <% @user.groups.each do |group| %>
+                <tr>
+                  <%if group.user_id != @user.id %>
+                    <td><%= group.title %></td>
+                    <td><%= link_to 'Show', group_path(group)%></td>
+                    <td><%= link_to 'Invite', group_path(group)%></td>
+                  <% end %>
+                </tr>
+              <% end %>
+            <% end %>
+          </tbody>
+        </table>
+    </div>
+    <div class="col">
+      <h4>Currently managing</h4>
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <%if @user.groups != nil %>
+            <% @user.groups.each do |group| %>
+              <tr>
+                <% if group.user_id == @user.id %>
+                  <td><%= group.title %></td>
+                  <td><%= link_to 'Show', group_path(group)%></td>
+                  <td><%= link_to 'Invite', group_path(group)%></td>
+                <% end %>
+              </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+</div>
+
+
 
 
 <br>
