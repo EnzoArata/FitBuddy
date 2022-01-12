@@ -3,6 +3,10 @@ class GroupsController < ApplicationController
     @group = Group.new
   end
 
+  def index
+    @groups = Group.all
+  end
+
   def create
     @group = Group.new(group_params)
     @group.user_id = session[:user_id]
@@ -20,6 +24,31 @@ class GroupsController < ApplicationController
   def show
     @group = Group.find(params[:id])
     @user = User.find(@group.user_id)
+  end
+
+  def joingroup
+    @group = Group.find(params[:group][:group_id])
+    @user = User.find(session[:user_id])
+    if @group.user << @user
+      flash[:notice] = "Joined group successfully!"
+      redirect_to @group
+    else
+      flash[:notice] = "Failed to join group"
+      render 'index'
+    end
+  end
+
+  def leavegroup
+    @group = Group.find(params[:group][:group_id])
+    @user = User.find(session[:user_id])
+    if @group.user.delete(@user.id)
+      flash[:notice] = "left group successfully!"
+      redirect_to groups_path
+    else
+      flash[:notice] = "Failed to join group"
+      render 'index'
+    end
+
   end
 
   private

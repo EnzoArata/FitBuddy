@@ -15,5 +15,7 @@ Rails.application.routes.draw do
 
   get 'newgroup', to: 'groups#new'
   resources :groups, except: [:new]
+  post 'joingroup', to: 'groups#joingroup'
+  post 'leavegroup', to: 'groups#leavegroup'
 
 end
