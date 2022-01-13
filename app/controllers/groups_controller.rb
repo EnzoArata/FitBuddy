@@ -41,6 +41,10 @@ class GroupsController < ApplicationController
   def leavegroup
     @group = Group.find(params[:group][:group_id])
     @user = User.find(session[:user_id])
+    if @user == @group.user_id
+      flash[:notice] = "Cant leave group because you are the owner"
+      redirect_to @group
+    end
     if @group.user.delete(@user.id)
       flash[:notice] = "left group successfully!"
       redirect_to groups_path
