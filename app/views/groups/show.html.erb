@@ -89,6 +89,10 @@
           </tbody>
         </table>
         <br><br><br><br>
+        <%if logged_in? && current_user.id == session[:user_id] %>
+          <%= link_to "Edit Group", @group, class: "btn btn-danger" %>
+        <% end %>
+        <br><br>
       </div>
     </div>
   </div>

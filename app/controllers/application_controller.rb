@@ -9,4 +9,19 @@ class ApplicationController < ActionController::Base
   def logged_in?
     !!current_user
   end
+
+  def require_user
+    if !logged_in?
+      flash[:alert] = "You must be logged in to perform that action"
+      redirect_to login_path
+    end
+  end
+
+  def require_same_user
+    if current_user != User.find(params[:id])
+      flash[:alert] = "You can only edit your own user record"
+      redirect_to user_path(current_user)
+    end
+
+  end
 end

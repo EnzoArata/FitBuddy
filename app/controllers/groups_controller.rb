@@ -1,4 +1,6 @@
 class GroupsController < ApplicationController
+  before_action :require_user, except: [:show, :index]
+
   def new
     @group = Group.new
   end
