@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-10">
+    <div class="col-10 text-center">
       <% if @group.errors.any? %>
         <h2>The following errors prevented the group from being created</h2>
         <ul>
@@ -25,7 +25,7 @@
           <%= f.label :public %> <br>
           <%= f.check_box :public %>
         </p>
-      
+
         <p>
           <%= f.submit "Create Group!"  %>
         </p>
