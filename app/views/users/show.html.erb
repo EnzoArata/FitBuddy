@@ -1,66 +1,75 @@
-<h1 class="text-center">Welcome to <%=@user.username%>'s profile</h1>
-<br><br><br><br><br><br><br>
-<div class="container">
-  <div class="row align-items-start">
-    <div class="col">
-        <h4>Currently apart of</h4>
-        <table>
-          <thead>
-            <tr>
-              <th></th>
-              <th></th>
-              <th></th>
-            </tr>
-          </thead>
-
-          <tbody>
-            <% if @user.groups != nil %>
-              <% @user.groups.each do |group| %>
-                <tr>
-                  <%if group.user_id != @user.id %>
-                    <td><%= group.title %></td>
-                    <td><%= link_to 'Show', group_path(group)%></td>
-                    <td><%= link_to 'Invite', group_path(group)%></td>
-                  <% end %>
-                </tr>
-              <% end %>
-            <% end %>
-          </tbody>
-        </table>
-    </div>
-    <div class="col">
-      <h4>Currently managing</h4>
-      <table>
-        <thead>
-          <tr>
-            <th></th>
-            <th></th>
-            <th></th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <%if @user.groups != nil %>
-            <% @user.groups.each do |group| %>
+<div id="page-content">
+  <h1 class="text-center">Welcome to <%=@user.username%>'s profile</h1>
+  <br>
+  <div class="container justify-content-center" id ="user-content">
+    <div class="row justify-content-center">
+      <div class="col-4">
+        <h4>About me</h4>
+        <p>I found my passion for health and fitness my sophmore year of college.
+          Like most people I gained a lot of weight freshman year.</p>
+      </div>
+      <div class="col-4">
+          <h4>Currently apart of</h4>
+          <table>
+            <thead>
               <tr>
-                <% if group.user_id == @user.id %>
-                  <td><%= group.title %></td>
-                  <td><%= link_to 'Show', group_path(group)%></td>
-                  <td><%= link_to 'Invite', group_path(group)%></td>
-                <% end %>
+                <th></th>
+                <th></th>
+                <th></th>
               </tr>
-            <% end %>
-          <% end %>
-        </tbody>
-      </table>
+            </thead>
+
+            <tbody>
+              <% if @user.groups != nil %>
+                <% @user.groups.each do |group| %>
+                  <tr>
+                    <%if group.user_id != @user.id %>
+                      <td><%= group.title %></td>
+                      <td><%= link_to 'Show', group_path(group),class: "btn btn-info"%></td>
+                      <td><%= link_to 'Invite', group_path(group),class: "btn btn-info"%></td>
+                    <% end %>
+                  </tr>
+                <% end %>
+              <% end %>
+            </tbody>
+          </table>
+          <br>
+          <h4>Currently managing</h4>
+          <table>
+            <thead>
+              <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <%if @user.groups != nil %>
+                <% @user.groups.each do |group| %>
+                  <tr>
+                    <% if group.user_id == @user.id %>
+                      <td><%= group.title %></td>
+                      <td><%= link_to 'Show', group_path(group),class: "btn btn-info"%></td>
+                      <td><%= link_to 'Invite', group_path(group),class: "btn btn-info"%></td>
+                    <% end %>
+                  </tr>
+                <% end %>
+              <% end %>
+            </tbody>
+          </table>
+      </div>
+
+
     </div>
 
+    <br><br><br><br><br><br><br><br><br><br><br>
+    <p class="text-center"> <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-warning" %></p>
+    <br>
   </div>
 
+
+
+
+
 </div>
-
-
-
-
-<br>
-<p class="text-center"> <%= link_to 'Users page', users_path %></p>
