@@ -31,7 +31,7 @@ class GroupsController < ApplicationController
   def joingroup
     @group = Group.find(params[:group][:group_id])
     @user = User.find(session[:user_id])
-    if @group.user << @user
+    if @group.users << @user
       flash[:notice] = "Joined group successfully!"
       redirect_to @group
     else
@@ -47,11 +47,11 @@ class GroupsController < ApplicationController
       flash[:notice] = "Cant leave group because you are the owner"
       redirect_to @group
     end
-    if @group.user.delete(@user.id)
+    if @group.users.delete(@user.id)
       flash[:notice] = "left group successfully!"
       redirect_to groups_path
     else
-      flash[:notice] = "Failed to join group"
+      flash[:notice] = "Failed to leave group"
       render 'index'
     end
 

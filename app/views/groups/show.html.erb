@@ -21,8 +21,8 @@
           </thead>
 
           <tbody>
-            <%if @group.user != nil %>
-              <% @group.user.each do |user| %>
+            <%if @group.users != nil %>
+              <% @group.users.each do |user| %>
                 <tr>
 
                   <td><%= user.username %></td>
@@ -39,7 +39,7 @@
         </table>
         <br>
         <%if @group.user_id == session[:user_id] %>
-          <h6><%= link_to 'Invite new members!', root_path,class: "btn btn-warning" %></h6>
+          <h6><%= link_to 'Invite new members!', new_invite_path(:group => {:group_id =>@group.id}),class: "btn btn-warning" %></h6>
         <% end %>
       </div>
     </div>

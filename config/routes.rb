@@ -18,4 +18,6 @@ Rails.application.routes.draw do
   post 'joingroup', to: 'groups#joingroup'
   post 'leavegroup', to: 'groups#leavegroup'
 
+  resources :invites, only: [:new, :create, :index, :destroy]
+
 end

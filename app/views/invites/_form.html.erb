@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-10">
+      
+
+      <%= form_with(model: @invite, local: true )  do |f| %>
+        <p>
+          <%= f.label :"User Email" %> <br>
+          <%= f.text_field :email %>
+        </p>
+        <%= f.hidden_field :group_id, :value => @group.id %>
+        <%= f.hidden_field :sender_id, :value => session[:user_id] %>
+        <p>
+          <%= f.submit "Send Invite!"  %>
+        </p>
+      <% end %>
+
+    </div>
+
+  </div>
+
+</div>
