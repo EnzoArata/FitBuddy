@@ -53,6 +53,9 @@ body {
 }
 
 #homelink{
+  border-radius: 30px;
+}
+#myAlert{
 
 }
 .navbar-toggler{
@@ -62,5 +65,10 @@ body {
 .navbar-toggler-icon{
   border-color: yellow;
 
+
+}
+
+.alert-notice {
+  background-color: #e6cd8a;
 
 }
