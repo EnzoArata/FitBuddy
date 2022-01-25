@@ -1,8 +1,24 @@
 class GroupsController < ApplicationController
   before_action :require_user, except: [:show, :index]
+  before_action :require_group_owner, only: [:edit]
 
   def new
     @group = Group.new
+  end
+
+  def edit
+    @group = Group.find(params[:id])
+  end
+
+  def update
+    @group = Group.find(params[:id])
+    if @group.update(group_params)
+      flash[:notice] = "Group updated successfully"
+      redirect_to @group
+    else
+      render 'edit'
+    end
+
   end
 
   def index

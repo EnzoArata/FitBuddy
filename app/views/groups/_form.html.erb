@@ -27,7 +27,7 @@
         </p>
 
         <p>
-          <%= f.submit "Create Group!"  %>
+          <%= f.submit(@group.new_record? ? "Create Group!"  : "Update Group!")  %>
         </p>
       <% end %>
 

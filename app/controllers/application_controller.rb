@@ -24,4 +24,13 @@ class ApplicationController < ActionController::Base
     end
 
   end
+
+  def require_group_owner
+    @group = Group.find(params[:id])
+    if current_user.id != @group.user_id
+      flash[:alert] = "Only the group owner can edit the group"
+      redirect_to user_path(current_user)
+    end
+  end
+
 end
