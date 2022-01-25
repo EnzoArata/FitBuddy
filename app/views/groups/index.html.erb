@@ -15,7 +15,11 @@
           <tbody>
             <% @groups.each do |group| %>
               <tr>
-                <td><%= group.title %></td>
+                <%if group.public%>
+                  <td><%= group.title %></td>
+                <%else%>
+                  <td ><%= group.title%>(Private)</td>
+                <%end%>
                 <td><%= group.bio %></td>
                 <td><%= link_to 'Show', group_path(group),class: "btn btn-info"%></td>
                 <% if group.users.exists?(session[:user_id]) %>
@@ -23,7 +27,9 @@
                     <td><%= link_to 'Leave Group!', leavegroup_path(:group => { :group_id => group.id}), method: :post,class: "btn btn-danger"%></td>
                   <% end %>
                 <% else %>
-                  <td><%= link_to 'Join Group!', joingroup_path(:group => { :group_id => group.id}), method: :post,class: "btn btn-success"%></td>
+                  <%if group.public %>
+                    <td><%= link_to 'Join Group!', joingroup_path(:group => { :group_id => group.id}), method: :post,class: "btn btn-success"%></td>
+                  <%end%>
                 <% end %>
               </tr>
             <% end %>
@@ -46,7 +52,11 @@
               <% @user.invites.each do |invite| %>
                 <% group = Group.find(invite.group_id)%>
                 <tr>
-                    <td><%= group.title %></td>
+                    <%if group.public%>
+                      <td><%= group.title %></td>
+                    <%else%>
+                      <td><%= group.title %>>(Private)</td>
+                    <%end%>
                     <td><%= group.bio %></td>
                     <td><%= link_to 'Show', group_path(group),class: "btn btn-info"%></td>
                     <% if group.users.exists?(session[:user_id]) %>

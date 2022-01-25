@@ -1,7 +1,9 @@
 <div id="page-content">
   <h1 class="text-center"><%= @group.title %></h1>
   <h6 class="text-center fst-italic">Created by <%= @user.username%></h6>
-  <br>
+  <%if !@group.public %>
+    <h6 class="text-center fst-italic">Private Group</h6>
+  <%end %>
   <div class="container" id= "group-content">
     <div class="row align-items-start">
       <div class="col">
@@ -93,7 +95,7 @@
           <%= link_to "Edit Group", edit_group_path(@group), class: "btn btn-danger" %>
         <% end %>
 
-        <%if logged_in? && !@group.users.exists?(session[:user_id]) %>
+        <%if logged_in? && !@group.users.exists?(session[:user_id]) && @group.public %>
           <%= link_to "Join Group!", joingroup_path(:group => { :group_id => @group.id}), method: :post,class: "btn btn-success"%>
         <% end%>
 
